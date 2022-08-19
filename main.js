@@ -12,10 +12,20 @@ var app = express()
 
 
 
+/**
+ * SETTING OF DATABASE
+ */
+import { DbAdapter } from './Services/Database/Mongo/DbAdapter.js'
+
+const database = new DbAdapter()
+database.connectDatabase()
+
+
+
 import swaggerUi from 'swagger-ui-express'
 import swaggerJSDoc from 'swagger-jsdoc'
 
-/*
+/**
  * FOR THE DOCUMENTATION WITH SWAGGER
  */
 const swaggerDefinition = {
@@ -36,7 +46,7 @@ const swaggerDefinition = {
 const options = {
     swaggerDefinition,
     // Paths to files containing OpenAPI definitions
-    apis: ['./docs/*.yaml'],
+    apis: ['./Docs/*.yaml'],
 }
 
 const swaggerSpec = swaggerJSDoc(options)
