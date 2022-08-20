@@ -22,6 +22,22 @@ database.connectDatabase()
 
 
 
+import { router as ROLE_V1_ROUTES } from './Modules/Role/Role.routesHandle.js'
+
+
+app.use(express.json())
+
+app.use("/api/v2/roles", ROLE_V1_ROUTES)
+
+app.use(function(req, res, next){
+    res.status(404)
+    res.json({
+        statusCode: 404,
+        success: false,
+        message: '404 NOT FOUND' 
+    })
+})
+
 import swaggerUi from 'swagger-ui-express'
 import swaggerJSDoc from 'swagger-jsdoc'
 
