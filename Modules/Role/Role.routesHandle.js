@@ -1,12 +1,13 @@
 import { Router } from "express"
-import RoleController from "./RoleController.js"
+import RoleController from "./role.controller.js"
 
-// let roleController = new (require("./roles.controller").default)
+
 
 const router = Router()
+const roleController = new RoleController();
 
-router.get("", (req,res, next) => {
-    return RoleController.index(req, res, next)
+router.get("/all", (req,res, next) => {
+    return roleController.index(req, res)
 })
 
 
